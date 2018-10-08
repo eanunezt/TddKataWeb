@@ -44,14 +44,15 @@ class FunctionalTest(TestCase):
         imagen.send_keys('C:\\avatar.jpeg')
 
         nombreUsuario = self.browser.find_element_by_id('id_username')
-        nombreUsuario.send_keys('nombre1')
+        nombreUsuario.send_keys('nombre123')
 
         clave = self.browser.find_element_by_id('id_password')
         clave.send_keys('Clave0000')
 
         botonGrabar = self.browser.find_element_by_id('id_grabar')
         botonGrabar.click()
-        self.browser.implicitly_wait(3)
-        span = self.browser.find_element(By.XPATH, '//span[text()="nombre1 nombre2 nombre3"]')
+        self.browser.implicitly_wait(10)
 
-        self.assertIn('nombre1 nombre2 nombre3', span.text)
+        span = self.browser.find_element(By.XPATH, '//span[text()="nombre1 nombre2 apellido1 apellido2"]')
+
+        self.assertIn('nombre1 nombre2 apellido1 apellido2', span.text)
