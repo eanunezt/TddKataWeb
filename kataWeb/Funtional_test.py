@@ -8,14 +8,13 @@ from selenium.webdriver.common.by import By
 
 class FunctionalTest(TestCase):
     def setUp(self):
-        self.browser = webdriver.Chrome("C:\\Users\\eanunezt\\chromedriver.exe")
+        self.browser = webdriver.Chrome("C:\\chromedriver.exe")
         self.browser.set_window_size(1024, 786)
         self.browser.implicitly_wait(50000)
-
 
     def tearDown(self):
         self.browser.quit()
 
     def test_1_title(self):
         self.browser.get('http://localhost:8000')
-        self.assertIn('Busco Ayuda',self.browser.title)
+        self.assertIn('BuscoAyuda', self.browser.title)
