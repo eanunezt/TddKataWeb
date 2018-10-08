@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     url('editar/(?P<idTrabajador>\d+)$', views.editar_perfil, name='editar'),
     url('login', views.login),
+    url('ingresar', views.ingresar),
     url('register', views.register),
     url('logout', views.logout),
     url('trabajador/(?P<pk>\d+)$', views.detail),

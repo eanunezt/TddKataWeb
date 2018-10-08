@@ -28,6 +28,7 @@ def login(request):
     username = request.POST.get('usrname', '')
     password = request.POST.get('psw', '')
     user = auth.authenticate(username=username, password=password)
+    print('login--->' + username)
     if user is not None:
         auth.login(request, user)
         messages.success(request, "Bienvenido al sistema {}".format(username), extra_tags="alert-success")
@@ -120,3 +121,7 @@ def detalle_trabajador(request):
 def detail(request, pk):
     trabajador = get_object_or_404(Trabajador, pk=pk)
     return HttpResponse(serializers.serialize("json", [trabajador]))
+
+@csrf_exempt
+def ingresar(request):
+    return render(request, 'polls/login.html')
