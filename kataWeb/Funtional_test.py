@@ -82,7 +82,7 @@ class FunctionalTest(TestCase):
         password = self.browser.find_element_by_id('password')
         password.send_keys('Clave0000')
 
-    def test_registro(self):
+    def test_editar(self):
         self.browser.get('http://localhost:8000')
         link = self.browser.find_element_by_id('id_login')
         link.click()
@@ -116,12 +116,6 @@ class FunctionalTest(TestCase):
 
         imagen = self.browser.find_element_by_id('id_imagen')
         imagen.send_keys('C:\\avatar.jpeg')
-
-        nombreUsuario = self.browser.find_element_by_id('id_username')
-        nombreUsuario.send_keys('nombre16')
-
-        clave = self.browser.find_element_by_id('id_password')
-        clave.send_keys('Clave0000')
 
         botonGrabar = self.browser.find_element_by_id('id_grabar')
         botonGrabar.click()

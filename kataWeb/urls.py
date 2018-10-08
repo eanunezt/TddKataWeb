@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     url('editar/(?P<idTrabajador>\d+)$', views.editar_perfil, name='editar'),
+    url('editar/', views.index, name='index'),
     url('login', views.login),
     url('ingresar', views.ingresar),
     url('register', views.register),

@@ -25,8 +25,8 @@ def index(request):
 
 @csrf_exempt
 def login(request):
-    username = request.POST.get('usrname', '')
-    password = request.POST.get('psw', '')
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
     user = auth.authenticate(username=username, password=password)
     print('login--->' + username)
     if user is not None:
@@ -67,7 +67,7 @@ def register(request):
     return HttpResponseRedirect('/')
 
 
-def editar_perfil(request,idTrabajador):
+def editar_perfil(request, idTrabajador):
     trabajador=Trabajador.objects.get(usuarioId=idTrabajador)
     if request.method == 'POST':
         # formulario enviado
