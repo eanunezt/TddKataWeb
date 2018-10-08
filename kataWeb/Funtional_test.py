@@ -20,42 +20,42 @@ class FunctionalTest(TestCase):
         self.assertIn('BuscoAyuda', self.browser.title)
 
     def test_registro(self):
-        self.browser.get('http://localhost:8000')
-        link = self.browser.find_element_by_id('id_register')
-        link.click()
+            self.browser.get('http://localhost:8000')
+            link = self.browser.find_element_by_id('id_register')
+            link.click()
 
-        nombre = self.browser.find_element_by_id('id_nombre')
-        nombre.send_keys('nombre1 nombre2')
+            nombre = self.browser.find_element_by_id('id_nombre')
+            nombre.send_keys('nombre1 nombre2')
 
-        apellidos = self.browser.find_element_by_id('id_apellidos')
-        apellidos.send_keys('apellido1 apellido2')
+            apellidos = self.browser.find_element_by_id('id_apellidos')
+            apellidos.send_keys('apellido1 apellido2')
 
-        experiencia = self.browser.find_element_by_id('id_aniosExperiencia')
-        experiencia.send_keys('2')
+            experiencia = self.browser.find_element_by_id('id_aniosExperiencia')
+            experiencia.send_keys('2')
 
-        self.browser.find_element_by_xpath("//select[@id='id_tiposDeServicio']/option[text()='Desarrollo Python']").click()
-        telefono = self.browser.find_element_by_id('id_telefono')
-        telefono.send_keys('3101234567')
+            self.browser.find_element_by_xpath("//select[@id='id_tiposDeServicio']/option[text()='Desarrollo Python']").click()
+            telefono = self.browser.find_element_by_id('id_telefono')
+            telefono.send_keys('3101234567')
 
-        correo = self.browser.find_element_by_id('id_correo')
-        correo.send_keys('algo@algo.com')
+            correo = self.browser.find_element_by_id('id_correo')
+            correo.send_keys('algo@algo.com')
 
-        imagen = self.browser.find_element_by_id('id_imagen')
-        imagen.send_keys('C:\\avatar.jpeg')
+            imagen = self.browser.find_element_by_id('id_imagen')
+            imagen.send_keys('C:\\avatar.jpeg')
 
-        nombreUsuario = self.browser.find_element_by_id('id_username')
-        nombreUsuario.send_keys('nombre16')
+            nombreUsuario = self.browser.find_element_by_id('id_username')
+            nombreUsuario.send_keys('nombre16')
 
-        clave = self.browser.find_element_by_id('id_password')
-        clave.send_keys('Clave0000')
+            clave = self.browser.find_element_by_id('id_password')
+            clave.send_keys('Clave0000')
 
-        botonGrabar = self.browser.find_element_by_id('id_grabar')
-        botonGrabar.click()
-        self.browser.implicitly_wait(10)
+            botonGrabar = self.browser.find_element_by_id('id_grabar')
+            botonGrabar.click()
+            self.browser.implicitly_wait(10)
 
-        span = self.browser.find_element(By.XPATH, '//span[text()="nombre1 nombre2 apellido1 apellido2"]')
+            span = self.browser.find_element(By.XPATH, '//span[text()="nombre1 nombre2 apellido1 apellido2"]')
 
-        self.assertIn('nombre1 nombre2 apellido1 apellido2', span.text)
+            self.assertIn('nombre1 nombre2 apellido1 apellido2', span.text)
 
     def test_verDetalle(self):
         self.browser.get('http://localhost:8000')
@@ -66,3 +66,16 @@ class FunctionalTest(TestCase):
         h2 = self.browser.find_element(By.XPATH, '//h2[text()="nombre1 nombre2 apellido1 apellido2"]')
 
         self.assertIn('nombre1 nombre2 apellido1 apellido2', h2.text)
+
+    def test_login(self):
+        self.browser.get('http://localhost:8000')
+        link = self.browser.find_element_by_id('id_login')
+        link.click()
+
+        self.browser.implicitly_wait(3)
+
+        username = self.browser.find_element_by_id('username')
+        username.send_keys('nombre1')
+
+        password = self.browser.find_element_by_id('password')
+        password.send_keys('Clave0000')
