@@ -59,7 +59,6 @@
                     required: true,
                     email: true
                 },
-                imagen: "required",
                 username: "required",
                 password: {
                     required: true,
@@ -73,7 +72,7 @@
                 tiposDeServicio: "Por favor seleccione el tipo de servicio que ofrecer&aacute;",
                 telefono: "Por favor ingrese un tel&eacute;fono v&aacute;alido",
                 correo: "Por favor ingrese un correo v&aacute;lido",
-                imagen: "Por favor suba una foto",
+                imagen: "Por favor ingrese una url de una foto",
                 username: "Por favor ingrese su usuario",
                 password: "Por favor ingrese su contrase&ntilde;a",
                 confirmar: {
@@ -83,11 +82,6 @@
             submitHandler: function (form) {
                 form.submit();
             }
-        });
-        $('#imagen').click(function () {
-            alert($('input[type=file]').val());
-            return true;
-
         });
         $('#register_modal').on('hidden.bs.modal', function () {
             validator.resetForm();

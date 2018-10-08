@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Trabajador, TrabajadorForm, UserForm, Comentario
+from .models import Trabajador, TrabajadorForm, UserForm, Comentario, User
 from .models import TiposDeServicio
 from django.conf import settings
 from django.http import HttpResponseRedirect, HttpResponse
@@ -33,3 +33,26 @@ def editar_perfil(request,idTrabajador):
 
     context = {'form_trabajador': form_trabajador}
     return render(request, 'polls/editar.html', context)
+
+
+def register(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = User.objects.create_user(username=username, password=password)
+        user.first_name = request.POST.get('nombre')
+        user.last_name = request.POST.get('apellidos')
+        user.email = request.POST.get('correo')
+        user.save()
+        nuevo_trabajador = Trabajador(nombre=request.POST['nombre'],
+                                      apellidos=request.POST['apellidos'],
+                                      aniosExperiencia=request.POST.get('aniosExperiencia'),
+                                      tiposDeServicio=TiposDeServicio.objects.get(pk=request.POST.get('tiposDeServicio')),
+                                      telefono=request.POST.get('telefono'),
+                                      correo=request.POST.get('correo'),
+                                      imagen=request.FILES['imagen'],
+                                      usuarioId=user)
+        nuevo_trabajador.save()
+
+    return HttpResponseRedirect('/')

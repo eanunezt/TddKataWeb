@@ -25,7 +25,7 @@ class Trabajador(models.Model):
     tiposDeServicio = models.ForeignKey(TiposDeServicio, null=True, on_delete=models.CASCADE)
     telefono = models.CharField(max_length=1000)
     correo = models.CharField(max_length=1000)
-    imagen = models.ImageField(upload_to='photos')
+    imagen = models.CharField(max_length=1000)
     usuarioId = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
 
 
@@ -33,7 +33,6 @@ class Comentario(models.Model):
     texto = models.CharField(max_length=1000)
     trabajador = models.ForeignKey(Trabajador, null=True, on_delete=models.CASCADE)
     correo = models.CharField(max_length=1000)
-
 
 
 class TrabajadorForm(ModelForm):
@@ -60,6 +59,10 @@ class TrabajadorForm(ModelForm):
     correo = forms.CharField(
         widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Correo electrónico'}),
         label='Correo'
+    )
+
+    forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese una url'})
     )
 
     class Meta:
