@@ -44,7 +44,7 @@ class FunctionalTest(TestCase):
         imagen.send_keys('C:\\avatar.jpeg')
 
         nombreUsuario = self.browser.find_element_by_id('id_username')
-        nombreUsuario.send_keys('nombre1')
+        nombreUsuario.send_keys('nombre16')
 
         clave = self.browser.find_element_by_id('id_password')
         clave.send_keys('Clave0000')
